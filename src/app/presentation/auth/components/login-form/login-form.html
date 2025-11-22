@@ -1,0 +1,75 @@
+<div class="flex items-center justify-center min-h-screen 
+  bg-gradient-to-br from-slate-100 to-slate-300"
+>
+  <div class="w-full max-w-sm flex flex-col gap-6 bg-white/90 backdrop-blur-sm 
+    rounded-2xl shadow-xl p-8 border border-gray-200"
+  >
+    <div class="flex items-center justify-center">
+      <lucide-icon name="log-in" class="w-15 h-15"></lucide-icon> 
+    </div>
+
+    <h2 class="text-3xl font-extrabold text-gray-800 text-center">Iniciar sesión</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col space-y-5">      
+      <div class="relative w-full">
+        <input
+          id="email"
+          name="email"
+          formControlName="email"
+          type="email"
+          placeholder=" "
+          class="peer w-full rounded-md border-0 border-b-2 border-gray-400 
+            bg-transparent px-3 py-3 text-sm 
+            focus:border-2 focus:border-blue-600 focus:rounded-md focus:outline-none"
+        />
+        <label
+          for="email"
+          class="absolute left-3 bg-white px-1 text-gray-500 text-base top-3 transition-all
+            peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-blue-600
+            peer-[&:not(:placeholder-shown)]:-top-2.5 peer-[&:not(:placeholder-shown)]:text-xs 
+            peer-[&:not(:placeholder-shown)]:text-gray-600"
+          >
+          Correo electrónico
+        </label>
+      </div>
+
+      <div class="relative w-full">
+        <input
+          id="password"
+          name="password"
+          formControlName="password"
+          type="password"
+          placeholder=" "
+          class="peer w-full rounded-md border-0 border-b-2 border-gray-400 
+            bg-transparent px-3 py-3 text-sm 
+            focus:border-2 focus:border-blue-600 focus:rounded-md focus:outline-none"
+        />
+        <label
+          for="password"
+          class="absolute left-3 bg-white px-1 text-gray-500 text-base top-3 transition-all
+            peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-blue-600
+            peer-[&:not(:placeholder-shown)]:-top-2.5 peer-[&:not(:placeholder-shown)]:text-xs 
+            peer-[&:not(:placeholder-shown)]:text-gray-600"
+          >
+          Contraseña
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-semibold 
+          py-3 rounded-xl transition cursor-pointer"
+      >
+        Entrar
+      </button>
+    </form>
+
+    <p class="text-center text-gray-600 text-sm">
+      ¿No tienes cuenta?
+      <a routerLink="/auth/register" class="text-blue-600 hover:underline font-semibold">
+        Regístrate
+      </a>
+    </p>
+  </div>
+</div>

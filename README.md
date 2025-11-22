@@ -1,4 +1,4 @@
-# ModernApp
+# Project developed with Angular using Hexagonal Architecture and Clean Architecture principles. It implements Standalone Components, NGRX, RxJS, and Signals, with a domain-driven structure to ensure scalability, maintainability, and high performance.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
 
@@ -47,6 +47,12 @@ ng test
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
+test builder: "@angular/build:karma" || "@angular-builders/jest:run"
+- "test": "ng test",
+- "test:jest": "jest",
+- "test:jest:watch": "jest --watch",
+- "test:jest:watchAll": "jest --watchAll",
+- "test:jest:coverage": "jest --coverage"
 
 ```bash
 ng e2e
