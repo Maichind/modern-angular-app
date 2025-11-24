@@ -3,10 +3,11 @@ import { User } from '@core/domain/user/models/user.model';
 import { FeedFacade } from '@core/application/feed/services/feed.facade';
 import { AuthFacade } from '@core/application/auth/services/auth.facade';
 import { UserProfileService } from '@core/infrastructure/user/repositories/user-profile.repository';
+import { Post } from '@core/domain/feed/models/feed.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserProfileFacade {
-  posts = signal<any[]>([]);
+  posts = signal<Post[]>([]);
   user = signal<User | null>(null);
   feedFacade = inject(FeedFacade);
   authFacade = inject(AuthFacade);
@@ -20,7 +21,7 @@ export class UserProfileFacade {
     );
   }
 
-  updateProfile(data: Partial<User>, redirect: boolean = true) {
+  updateProfile(data: Partial<User>, redirect = true) {
     const current = this.user();
     if (!current) return;
 

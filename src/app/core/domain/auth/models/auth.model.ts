@@ -21,9 +21,11 @@ export interface RegisterData {
   password: string;
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface AuthState {
   user: any | null;
   token: string | null;
   loading: boolean;
   error: string | null;
 }
+/* eslint-enable  @typescript-eslint/no-explicit-any */

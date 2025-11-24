@@ -24,10 +24,12 @@ export class LocalAuthRepository {
         return JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
     }
 
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     private saveUsers(users: any[]) {
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
     }
-
+    /* eslint-enable  @typescript-eslint/no-explicit-any */
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     login(email: string, password: string): Observable<AuthResponse> {
         const user = this.fakeUsers.find(u => u.email === email);
 
@@ -69,6 +71,7 @@ export class LocalAuthRepository {
 
         return of(session).pipe(delay(1000));
     }
+    /* eslint-enable @typescript-eslint/no-unused-vars */
 
     generateUsername(name: string, existingUsers: UserAuth[]): string {
         if (!name) return 'user' + Math.floor(Math.random() * 1000);

@@ -20,7 +20,7 @@ export class UserProfileService extends UserRepository {
     return this.getAllUsers().find(u => u.username === username);
   }
 
-  updateUserProfile(updatedUser: User, redirect: boolean = true): void {
+  updateUserProfile(updatedUser: User, redirect = true): void {
     const users = this.getAllUsers();
     const posts = this.feedFacade.posts();
     const auth = this.authFacade.getSession();

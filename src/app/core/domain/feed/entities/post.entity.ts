@@ -6,8 +6,8 @@ export class Post {
     public readonly authorId: number,
     public readonly content: string,
     public readonly createdAt: Date,
-    public readonly likes: number = 0,
-    public readonly shares: number = 0,
+    public readonly likes = 0,
+    public readonly shares = 0,
     public readonly reactions: Record<string, number> = {},
     public readonly comments: Comment[] = []
   ) {}

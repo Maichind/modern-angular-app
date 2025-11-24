@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { ThemeFacade } from '@core/application/theme/theme.facade';
 import { AuthFacade } from '@core/application/auth/services/auth.facade';
-import { Component, ElementRef, HostListener, inject, signal } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -15,12 +15,12 @@ import { Component, ElementRef, HostListener, inject, signal } from '@angular/co
       <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
         
         <!-- Logo -->
-        <a 
+        <button 
           (click)="goHome()" 
           class="text-xl font-bold text-gray-800 dark:text-gray-100 cursor-pointer"
         >
           <span class="text-blue-600 dark:text-blue-400">Social</span> App
-        </a>
+        </button>
 
         <!-- Right section -->
         <div class="flex items-center gap-4">
@@ -103,7 +103,7 @@ import { Component, ElementRef, HostListener, inject, signal } from '@angular/co
     </header>
   `
 })
-export class Header {
+export class Header implements OnInit {
   isOpen = signal(false);
   private router = inject(Router);
   private authFacade = inject(AuthFacade);

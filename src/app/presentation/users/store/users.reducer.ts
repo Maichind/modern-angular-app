@@ -2,11 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 import * as UsersActions from './users.actions';
 import { User } from '../services/users.service';
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export interface UsersState {
   users: User[];
   loading: boolean;
   error: any;
 }
+/* eslint-enable  @typescript-eslint/no-explicit-any */
 
 export const initialState: UsersState = {
   users: [],

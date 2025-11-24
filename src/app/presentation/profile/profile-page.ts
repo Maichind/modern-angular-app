@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Component, inject } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { PostCard } from '@presentation/feed/components/post-card';
 import { UserProfileFacade } from '@core/application/user/services/user-profile.facade';
@@ -16,7 +16,7 @@ import { UserProfileFacade } from '@core/application/user/services/user-profile.
         <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-600 
             dark:from-gray-700 dark:to-gray-950 relative group cursor-pointer">
             @if (user?.bannerUrl) {
-                <img [src]="user?.bannerUrl" class="w-full h-full object-cover" />
+                <img [src]="user?.bannerUrl" class="w-full h-full object-cover" alt="bannerUrl"/>
             }
             <input type="file" accept="image/*" hidden #coverInput (change)="onCoverSelected($event)" />
             <button 
@@ -32,7 +32,7 @@ import { UserProfileFacade } from '@core/application/user/services/user-profile.
                 shadow-lg bg-gray-200 hover:border-blue-200 transition-all duration-300 hover:scale-105">
                 @if (user?.avatarUrl) {
                     <div class="relative w-full h-full">
-                        <img [src]="user?.avatarUrl" class="w-full h-full object-cover" />   
+                        <img [src]="user?.avatarUrl" class="w-full h-full object-cover" alt="avatarUrl"/>   
                         <div class="absolute top-0 right-0 w-full h-full opacity-0 hover:opacity-40
                             flex items-center justify-center text-3xl font-bold text-blue-600">
                             <input type="file" accept="image/*" hidden #avatarInput (change)="onAvatarSelected($event)" />
@@ -77,7 +77,7 @@ import { UserProfileFacade } from '@core/application/user/services/user-profile.
             <p class="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed">{{ user?.bio || 'Sin descripción aún.' }}</p>
 
             <div class="flex flex-wrap gap-6 mt-4 text-sm text-gray-500 dark:text-gray-400">
-                <span><strong>{{ posts.length }}</strong> {{ posts.length == 1 ? 'publicación' : 'publicaciones' }}</span>
+                <span><strong>{{ posts.length }}</strong> {{ posts.length === 1 ? 'publicación' : 'publicaciones' }}</span>
                 <span><strong>{{ user?.followers?.length || 0 }}</strong> seguidores</span>
                 <span><strong>{{ user?.following?.length || 0 }}</strong> siguiendo</span>
             </div>
@@ -205,7 +205,7 @@ import { UserProfileFacade } from '@core/application/user/services/user-profile.
     </section>
   `
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
   editing = false;
   route = inject(ActivatedRoute);
   private fb = inject(FormBuilder);

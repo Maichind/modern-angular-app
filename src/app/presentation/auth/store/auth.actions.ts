@@ -15,6 +15,8 @@ export const AuthActions = createActionGroup({
     'Register Success': props<{ user: AuthResponse['user']; token: string }>(),
     'Register Failure': props<{ error: string }>(),
 
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     'Load Session': props<{ user: any; token: string }>(),
+    /* eslint-enable  @typescript-eslint/no-explicit-any */
   },
 });

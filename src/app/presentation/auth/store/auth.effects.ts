@@ -31,7 +31,7 @@ export const AuthEffects = createEffect(
 );
 
 export const loadSessionEffect = createEffect(
-  (actions$ = inject(Actions)) =>
+  () =>
     of(localStorage.getItem('auth')).pipe(
       map((data) => {
         if (!data) return { type: '[Auth] No Session' };

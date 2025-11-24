@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Pipe, PipeTransform, ChangeDetectorRef, OnDestroy, inject } from '@angular/core';
 
 @Pipe({
   name: 'timeAgo',
@@ -10,7 +10,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
   private lastDate?: string;
   private lastValue?: string;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  private cdr = inject(ChangeDetectorRef);
 
   transform(dateString: string): string {
     if (!dateString) return '';

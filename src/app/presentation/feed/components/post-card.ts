@@ -25,12 +25,12 @@ import { AuthFacade } from '@core/application/auth/services/auth.facade';
                 }
             </div>
             <div class="flex flex-col">
-                <h3 
+                <button 
                     (click)="goProfile()" 
                     class="font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-blue-500"
                 >
                     {{ post.author }}
-                </h3>
+                </button>
                 <span class="text-xs text-gray-400">{{ post.createdAt | timeAgo }}</span>
             </div>
         </div>
@@ -172,7 +172,9 @@ import { AuthFacade } from '@core/application/auth/services/auth.facade';
 export class PostCard {
   @Input() post!: Post;
   commentText = '';
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   hideTimeout: any;
+  /* eslint-enable  @typescript-eslint/no-explicit-any */
   showComments = false;
   showReactions = false;
   public router = inject(Router);
@@ -227,6 +229,7 @@ export class PostCard {
     return Object.values(post.reactions || {}).reduce((a, b) => a + b, 0);
   }
 
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   topReactions(post: Post): string[] {
     const entries = Object.entries(post.reactions || {})
         .filter(([_, count]) => count > 0)
@@ -235,6 +238,7 @@ export class PostCard {
         .map(([emoji]) => emoji);
     return entries;
   }
+  /* eslint-enable @typescript-eslint/no-unused-vars */
 
   toggleComments() {
     this.showComments = !this.showComments;

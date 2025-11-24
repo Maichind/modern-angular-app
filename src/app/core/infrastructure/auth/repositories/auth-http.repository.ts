@@ -1,5 +1,5 @@
 import { firstValueFrom } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthRepository } from '@core/domain/auth/repositories/auth.repository';
 import { LoginCredentials, RegisterData, AuthResponse } from '@core/domain/auth/models/auth.model';
@@ -7,8 +7,8 @@ import { LoginCredentials, RegisterData, AuthResponse } from '@core/domain/auth/
 @Injectable()
 export class AuthHttpRepository extends AuthRepository {
   private readonly baseUrl = '/api/auth';
-
-  constructor(private http: HttpClient) {
+  private http = inject(HttpClient);
+  constructor() {
     super();
   }
 
